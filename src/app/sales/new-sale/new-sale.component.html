@@ -1,0 +1,317 @@
+
+
+
+<mat-accordion class="example-headers-align" >
+    
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle style="width: 100%;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span style="text-shadow: 0px 0px 5px rgba(69, 20, 90, 0.877);font-size: 24px;color: rgba(50,55,101, 0.877);">Billing Details</span>
+        </mat-panel-title>
+        <mat-panel-description>
+          Type The Address Here
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  <!-- Starting of Inputs -->
+  
+  <!-- {{addressForm.value | json}} -->
+      <form [formGroup]="addressForm">
+
+        <div style="float: right;">
+          <mat-radio-group aria-label="Select an option" formControlName="invoiceType">
+           <p> <mat-radio-button value="original"  [checked]="true" color="primary">For All</mat-radio-button></p>
+            <p><mat-radio-button value="duplicate" color="primary">For Transport</mat-radio-button></p>
+          </mat-radio-group>
+        </div>
+       
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Invoice Number</mat-label>
+          <input matInput placeholder="Enter The Invoice Number" type="text" formControlName="inNo" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Invoice Date</mat-label>
+          <input matInput placeholder="Choose the Date" type="date" formControlName="inDate" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Vehicle Number</mat-label>
+          <input matInput placeholder="Enter The Vehicle Number" type="text" formControlName="vehNo" oninput="this.value = this.value.toUpperCase()" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Place Of Supply</mat-label>
+          <input matInput placeholder="Enter The placeOfSupply" type="text" formControlName="placeOfSupply" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+        
+        <mat-divider></mat-divider>
+        <br />
+        <h2>Billing Address :</h2>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Enter The Name" type="text" formControlName="name" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input matInput placeholder="Enter The Mobile Number" type="text" formControlName="phoneNo">
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>GST Number</mat-label>
+          <input matInput placeholder="Enter The GST Number" type="text" formControlName="gstNo" oninput="this.value = this.value.toUpperCase()" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Address Line 1</mat-label>
+          <input matInput placeholder="Enter The Address Line 1" type="text" formControlName="addressLine1" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Address Line 2</mat-label>
+          <input matInput placeholder="Enter The Address Line 2" type="text" formControlName="addressLine2" required>
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Address Line 3</mat-label>
+          <input matInput placeholder="Enter The Address Line 3" type="text" formControlName="addressLine3">
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Address Line 4</mat-label>
+          <input matInput placeholder="Enter The Address Line 4" type="text" formControlName="addressLine4">
+          <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+          <mat-hint>*</mat-hint>
+        </mat-form-field>
+  
+        <br />
+        <div style="float: right;">
+          <button mat-raised-button color="primary" type="button" (click)="onSubmitAddress();" [disabled]="addressForm.invalid">&nbsp;&nbsp;&nbsp;<mat-icon>save_alt</mat-icon><span>&nbsp;Save</span></button>
+          <!--button mat-raised-button color="primary"><mat-icon>description</mat-icon>Update</button -->
+        </div>
+
+        <br />
+        
+        
+    
+      </form>
+  
+  
+  
+  
+  
+      
+  
+  
+  <!-- Ending of input -->
+  
+  
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <!--Expansion panel 2 start-->
+    <br />
+    <br />
+    
+  <!-- {{quotationForm.value | json}} -->
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span style="text-shadow: 0px 0px 5px rgba(69, 20, 90, 0.877);font-size: 24px;color: rgba(161, 35, 192, 0.877);">
+            Quotations Entry
+          </span>
+        </mat-panel-title>
+        <mat-panel-description>
+          Enter the quotations here
+          <mat-icon>map</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+  
+      <div *ngIf="addressEntred; else elseBlock">
+        <p>Total Quotation count is <span style="background-color: blue;color: white; font-size: 16px;border-radius: 50px;"> &nbsp;&nbsp;{{quotationCount}}</span></p>
+        <!--Input starts-->
+        <form [formGroup]="quotationForm">
+          <input type="hidden" formControlName="inid" value='{{inId}}'>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Enter The Description" type="text" formControlName="description" required>
+            <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon --><!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+            <mat-hint>*</mat-hint>
+          </mat-form-field>
+  
+  
+  
+          <mat-form-field appearance="outline">
+            <mat-label>HSN / ASC </mat-label>
+            <input matInput placeholder="Enter The HSN / ASC " type="text" formControlName="hsnAsc" oninput="this.value = this.value.toUpperCase()" required>
+            <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon --><!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+            <mat-hint>*</mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput placeholder="Enter The Quantity" type="number" min='1' formControlName="quantity" required>
+            <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+            <mat-hint>*</mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Rate Per Unit</mat-label>
+            <input matInput placeholder="Enter The Rate Per Unit" type="number" min='1' formControlName="ratePerUnit" required>
+            <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+            <mat-hint>*</mat-hint>
+          </mat-form-field>
+  
+          <!-- mat-form-field appearance="outline">
+            <mat-label>GST</mat-label>
+            <input matInput placeholder="Enter The GST Number" type="text" formControlName="gst" -->
+            <!-- mat-icon matSuffix>sentiment_very_satisfied</mat-icon -->
+            <!-- mat-hint>*</mat-hint>
+          </mat-form-field -->
+
+          <mat-divider></mat-divider>
+        <br />
+        <h2>SELECT GST :</h2>
+
+          <br />
+          
+          <div style="float: left;">
+            <mat-radio-group aria-label="Select an option" formControlName="gstType">
+             <p> <mat-radio-button value="GST"  [checked]="true" color="primary">GST</mat-radio-button></p>
+             <p><mat-radio-button value="IGST" color="primary">IGST</mat-radio-button></p>
+            </mat-radio-group>
+          </div>
+
+          
+          
+
+          <mat-form-field appearance="outline" style="margin-left: 15px;"> 
+            <mat-label>Select The GST</mat-label>
+            <mat-select formControlName="gst" required>
+              
+              <mat-option *ngFor="let gstType of gstTypes" [value]="gstType">
+                {{gstType}}
+              </mat-option>
+            </mat-select>
+            <!--mat-error *ngIf="gst.hasError('required')">Please choose an animal</mat-error -->
+            <mat-hint>*</mat-hint>
+          </mat-form-field>
+          <br />
+          <div style="float: right;">
+            <button mat-raised-button type="button" color="primary" (click)="addNewQuotation();" [disabled]="quotationForm.invalid"><mat-icon>add</mat-icon>Add</button>
+          </div>
+          
+  
+  
+        </form>
+      </div>
+  
+      <ng-template #elseBlock>
+        <h3 style="color: red;">Please Fill The Address first..!</h3>
+      </ng-template>
+      
+  
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+  <br />
+  <br />
+  
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span style="text-shadow: 0px 0px 5px rgba(69, 20, 90, 0.877);font-size: 24px;color: rgba(161, 35, 192, 0.877);">
+            View Quotations
+          </span>
+        </mat-panel-title>
+        <mat-panel-description>
+          Inform the date you wish to travel
+          <mat-icon>format_list_numbered</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <div *ngIf="addressEntred; else elseViewBlock" style="overflow-x: auto;">
+  
+        <table style="width: 100%;">
+          <tr>
+            <th>s.No</th>
+            <th>Description</th>
+            <th>HSN / ASC</th>
+            <th>Quantity</th>
+            <th>Rate Per Unit</th>
+            <th>GST</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let quot of quotations">
+            <td>{{quot.sNo}}</td>
+            <td>{{quot.description}}</td>
+            <td>{{quot.hsnAsc}}</td>
+            <td>{{quot.quantity}}</td>
+            <td>{{quot.ratePerUnit}}</td>
+            <td>{{quot.gst}}</td>
+            <td>{{quot.totalAmount}}</td>
+            <td><button mat-raised-button color="warn">Delete</button></td>
+          </tr>
+          <tr><th colspan="6" style="text-align: right;">Subtotal</th><td style="font-size: 18px;"><mat-icon color="primary">₹</mat-icon>{{subTotal}}</td></tr>
+    
+          <tr *ngFor="let gstval of sgstCgst">
+            <th colspan="6" style="text-align: right;">{{gstval.gst}}</th><td style="font-size: 18px;"><mat-icon color="primary">₹</mat-icon>{{gstval.gstRate}}</td>
+           <!--tr> <th colspan="6" style="text-align: right;">CGST@{{gstval.gst/2}}%</th><td style="font-size: 18px;">{{gstval.gstRate/2}}</td></tr -->
+           <!--tr> <th colspan="6" style="text-align: right;">SGST@{{gstval.gst/2}}%</th><td style="font-size: 18px;">{{gstval.gstRate/2}}</td></tr -->
+          </tr>
+          <tr><th colspan="6" style="text-align: right;">Fulltotal</th><td style="font-size: 18px;"><mat-icon color="primary">₹</mat-icon> {{fullTotal}}</td></tr>
+        </table>
+        <br />
+        <div  style="float: right;">
+          <button mat-flat-button color="primary" (click)="print();"><mat-icon>local_printshop</mat-icon></button>
+          
+        </div>
+  
+      </div>
+  
+      <ng-template #elseViewBlock>
+        <h3 style="color: red;">Please Fill The Address first..!</h3>
+      </ng-template>
+  
+      
+  
+  
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+        
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+  </mat-accordion>
+  

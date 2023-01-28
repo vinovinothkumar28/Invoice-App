@@ -1,0 +1,103 @@
+
+<div class="center">
+    <form [formGroup]="myCompanyForm">
+        <h1>MyCompany</h1>
+        <fieldset [disabled]="isDisabled" style="border: 0;">
+        <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input matInput placeholder="Enter The Company Name" type="text" formControlName="companyName" required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+
+          <p  style="width: 100%;">
+            <mat-form-field appearance="outline">
+              <mat-label>Contact Number</mat-label>
+              <input matInput placeholder="Enter The Contact Number" type="text" formControlName="companyContactNumber" required>
+              <mat-icon matSuffix>lock</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+
+         
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>E-Mail Id</mat-label>
+              <input matInput placeholder="Enter The E-Mail" type="text" formControlName="companyMailId" >
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>GST Number</mat-label>
+              <input matInput placeholder="Enter The GST Number" type="text" formControlName="companyGstNumber"  required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>AddresvLine 1</mat-label>
+              <input matInput placeholder="Enter The AddresvLine 1" type="text" formControlName="companyAddressLine1"  required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>AddresvLine 2</mat-label>
+              <input matInput placeholder="Enter The AddresvLine 2" type="text" formControlName="companyAddressLine2"  required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>Distric</mat-label>
+              <input matInput placeholder="Enter The Distric" type="text" formControlName="companyDistric"  required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>Pincode</mat-label>
+              <input matInput placeholder="Enter The Pincode" type="number" formControlName="companyPinCode" required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+
+          <p  style="width: 100%;" class="center">
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Enter The State" type="text" formControlName="companyState" required>
+              <mat-icon matSuffix>person</mat-icon>
+              <!--mat-hint>Hint</mat-hint -->
+            </mat-form-field>
+          </p>
+
+          <p style="width: 100%;" class="center">
+            <mat-form-field appearance="outline"> 
+              <mat-label>Acadamic Year</mat-label>
+              <mat-select formControlName="companyAcadamicYear" required [disabled]="isDisabled">
+                
+                <mat-option *ngFor="let acadamic of acadamicYears" [value]="acadamic">
+                  {{acadamic}}
+                </mat-option>
+              </mat-select>
+              <!--mat-error *ngIf="gst.hasError('required')">Please choose an animal</mat-error -->
+              <mat-hint>*</mat-hint>
+            </mat-form-field>
+          </p>
+          
+        </fieldset>
+
+          <p style="float: right;"><button mat-raised-button color="primary" style="margin: 4px;" type="button" (click)="onSubmit();" [disabled]="isDisabled || myCompanyForm.invalid">Update</button></p>
+          <p *ngIf="!isDisabled" style="float: right;"><button mat-stroked-button type="button" color="warn"  style="margin: 4px;" (click)="isDisabled = true">Cancel</button></p>
+          <p style="float: left;"><button mat-button color="primary" type="button" (click)="isDisabled = false;">Do you want change?</button></p>
+    </form>
+</div>

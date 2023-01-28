@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <br/>
+        <p style="float:right; margin-right: 0px; margin-top: -10px;"><button (click)="opened=!opened" mat-flat-button style="background-color:rgb(51, 57, 110);color: white;"><mat-icon>arrow_back_ios</mat-icon></button></p>
+        <p><button mat-button routerLinkActive="active" routerLink="dashboard" style="width: 100%;font-size: 13px;">Dashboard</button></p>
+        <p><button mat-button routerLinkActive="active" [routerLink]="['newsale',id]" style="width: 100%;font-size: 13px;">New Sale</button></p>
+        <!-- p><button mat-button style="color:white;" routerLinkActive="active" routerLink="edit" style="width: 100%;color: white;">Edit</button></p -->
+        <p><button mat-button (click)="onViewSalesClick();" routerLinkActive="active" routerLink="viewsales" style="width: 100%;font-size: 13px;">View</button></p>
+
+    </mat-sidenav>
+    <mat-sidenav-content style="width: 100%;">
+        <div *ngIf="!opened" style="float:left;background-color: rgba(50,55,101);height:100%;overflow-y: auto;"><button (click)="opened=!opened" mat-flat-button style="background-color: rgb(50,55,101);color: white;"><mat-icon>view_headline</mat-icon></button><hr/>
+            <p style="color: rgb(255, 255, 255);"><button mat-button routerLink="dashboard" routerLinkActive="active"><mat-icon>event_note</mat-icon></button></p>
+            <p style="color: rgb(255, 255, 255);"><button mat-button [routerLink]="['newsale',id]" routerLinkActive="active"><mat-icon>note_add</mat-icon></button></p>
+            <p style="color: rgb(255, 255, 255);"><button mat-button (click)="onViewSalesClick();" routerLink="viewsales" routerLinkActive="active"><mat-icon>search</mat-icon></button></p>
+        </div>
+        
+        <div style="float: bottom;height: 100%;overflow-y: auto;" [style.width]="opened ? '85%' : 'auto'">
+            <router-outlet></router-outlet>
+            <br />
+        </div>
+        
+       
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

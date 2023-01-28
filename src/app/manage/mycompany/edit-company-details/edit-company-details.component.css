@@ -1,0 +1,15 @@
+.center
+{
+    justify-content: center;
+}
+ 
+form
+{
+    margin: 0 auto;
+    display:table;
+    width: 40%;
+}
+mat-form-field
+{
+    width: 100%;
+}

@@ -1,0 +1,30 @@
+
+<br>
+<div style="width: auto;padding: 20px;">
+    <table>
+        <tr>
+            <th>s.No</th>
+            <th>Invoice Id</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Action</th>
+
+        </tr>
+
+        <tr *ngFor="let invoice of invoiceDetails">
+            <td>{{invoice.sNo}}</td>
+            <td>{{invoice.inNo}}</td>
+            <td>{{invoice.inDate}}</td>
+            <td>{{invoice.name}}</td>
+            <td>{{invoice.invoiceType}}</td>
+            <td><button mat-icon-button  (click)="onPrint(invoice)"><mat-icon color="primary">local_printshop</mat-icon></button>
+                <button mat-icon-button  (click)="onPrint(invoice)"><mat-icon color="warn">delete</mat-icon></button>
+            </td>
+
+
+        </tr>
+
+
+    </table>
+</div>
